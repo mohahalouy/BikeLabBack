@@ -17,6 +17,7 @@ class AuthController extends Controller
         return User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
+            'rol' => $request->input('rol'),
             'password' => Hash::make($request->input('password'))
         ]);
     }
@@ -38,22 +39,23 @@ class AuthController extends Controller
 
     public function resetPassword(Request $request)
     {
-        $email= $request->input('email');
+//        $email= $request->input('email');
         $user = new User();
 
-        $usario = $user->query()->where('email', $email)->first();
+//        $usario = $user->query()->where('email', $email)->first();
+//
+//        $valor = $user->where('email', $usario->email)->update(
+//            [ 'password' => Hash::make($request->input('password'))]
+//        );
+//
+//        if ($valor) {
+//            $mensaje = "REGISTRO ACTUALIZADO";
+//        } else {
+//            $mensaje = "REGISTRO SIN CAMBIOS";
+//        }
 
-        $valor = $user->where('email', $usario->email)->update(
-            [ 'password' => Hash::make($request->input('password'))]
-        );
-
-        if ($valor) {
-            $mensaje = "REGISTRO ACTUALIZADO";
-        } else {
-            $mensaje = "REGISTRO SIN CAMBIOS";
-        }
-
-        return $mensaje;
+//        return $mensaje;
+        return $user->all();
     }
 
     public function user()
