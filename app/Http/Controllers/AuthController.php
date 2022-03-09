@@ -32,9 +32,9 @@ class AuthController extends Controller
 
         $token=$user->createToken($user->email)->plainTextToken;
 
-        $cookie=cookie('jwt',$token,60*24,null,null,true,false,false,'none');
+        $cookie=cookie('jwt',$token,60*24,null,null,true,false,false,'None');
 
-        return response(['message'=>$token])->withCookie($cookie);
+        return response($user)->withCookie($cookie);
     }
 
     public function resetPassword(Request $request)
@@ -66,7 +66,7 @@ class AuthController extends Controller
     public function logout()
     {
 
-        $cookie = cookie('jwt', '', 0, null, null, true, false, false, 'none');
+        $cookie = cookie('jwt', '', 0, null, null, true, false, false, 'None');
 
         return response(['message' => 'success'])->withCookie($cookie);
     }
