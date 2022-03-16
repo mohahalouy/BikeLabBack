@@ -20,6 +20,8 @@ Route::post('login',[\App\Http\Controllers\AuthController::class, 'login']);
 
 Route::post('addNews',[\App\Http\Controllers\noticiasController::class, 'addNews']);
 
+Route::get('noticias',[\App\Http\Controllers\noticiasController::class, 'index']);
+
 Route::get('resetPassword',[\App\Http\Controllers\AuthController::class, 'resetPassword']);
 
 Route::middleware('auth:sanctum')->group(function (){
@@ -27,4 +29,4 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post('logout',[\App\Http\Controllers\AuthController::class, 'logout']);
 });
 
-//Route::get('noticias',[\App\Http\Controllers\noticiasController::class, 'index']);
+

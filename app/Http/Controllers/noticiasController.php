@@ -14,6 +14,7 @@ class noticiasController extends Controller
         $noticia = new noticias();
         $noticia->titulo = $request->input('titulo');
         $noticia->fecha = $request->input('fecha');
+        $noticia->previewTexto = $request->input('previewTexto');
         $noticia->texto = $request->input('texto');
 
         if($request->hasfile('imagen'))
@@ -28,5 +29,12 @@ class noticiasController extends Controller
         $noticia->save();
 
         return response('insert success');
+    }
+
+    public function index()
+    {
+        $noticias = new noticias();
+
+        return $noticias->all();
     }
 }

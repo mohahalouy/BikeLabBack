@@ -14,6 +14,7 @@ class noticias extends Model
     protected $fillable = [
         'titulo',
         'fecha',
+        'previewTexto',
         'texto',
         'imagen',
     ];

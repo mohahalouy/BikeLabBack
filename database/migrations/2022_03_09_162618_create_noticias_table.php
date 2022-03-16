@@ -17,7 +17,8 @@ class CreateNoticiasTable extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('fecha');
-            $table->string('texto');
+            $table->string('previewTexto');
+            $table->longText('texto');
             $table->string('imagen');
             $table->timestamps();
         });
