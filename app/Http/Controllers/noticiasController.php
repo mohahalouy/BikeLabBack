@@ -12,10 +12,13 @@ class noticiasController extends Controller
 
 
         $noticia = new noticias();
-        $noticia->titulo = $request->input('titulo');
+        $noticia->tituloEs = $request->input('tituloEs');
+        $noticia->tituloEn = $request->input('tituloEn');
         $noticia->fecha = $request->input('fecha');
-        $noticia->previewTexto = $request->input('previewTexto');
-        $noticia->texto = $request->input('texto');
+        $noticia->previewTextoEs = $request->input('previewTextoEs');
+        $noticia->previewTextoEn = $request->input('previewTextoEn');
+        $noticia->textoEs = $request->input('textoEs');
+        $noticia->textoEn = $request->input('textoEn');
 
         if($request->hasfile('imagen'))
         {
@@ -36,5 +39,15 @@ class noticiasController extends Controller
         $noticias = new noticias();
 
         return $noticias->all();
+    }
+
+    public function find(Request $request)
+    {
+
+        $noticia = noticias::where('id', $request->query('id'))->get();
+//       $noticia=noticias::find(8);
+
+        return $noticia;
+
     }
 }

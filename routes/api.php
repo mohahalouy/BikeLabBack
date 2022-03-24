@@ -22,6 +22,12 @@ Route::post('addNews',[\App\Http\Controllers\noticiasController::class, 'addNews
 
 Route::get('noticias',[\App\Http\Controllers\noticiasController::class, 'index']);
 
+Route::get('noticia/',[\App\Http\Controllers\noticiasController::class, 'find']);
+
+Route::post('addModel',[\App\Http\Controllers\modelosController::class, 'addModel']);
+
+Route::get('modelos',[\App\Http\Controllers\modelosController::class, 'index']);
+
 Route::get('resetPassword',[\App\Http\Controllers\AuthController::class, 'resetPassword']);
 
 Route::middleware('auth:sanctum')->group(function (){

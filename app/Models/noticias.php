@@ -12,10 +12,13 @@ class noticias extends Model
     protected $table='noticias';
 
     protected $fillable = [
-        'titulo',
+        'tituloEs',
+        'tituloEn',
         'fecha',
-        'previewTexto',
-        'texto',
+        'previewTextoEs',
+        'previewTextoEn',
+        'textoEs',
+        'textoEn',
         'imagen',
     ];
 }
