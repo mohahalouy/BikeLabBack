@@ -26,6 +26,7 @@ class CreateModelosTable extends Migration
             $table->string('enlace');
             $table->string('tipoMotorEs');
             $table->string('tipoMotorEn');
+            $table->string('modelo');
             $table->float('precio');
             $table->float('cv');
             $table->float('cc');

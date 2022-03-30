@@ -23,6 +23,7 @@ class modelosController extends Controller
         $modelo->enlace = $request->input('enlace');
         $modelo->tipoMotorEs = $request->input('tipoMotorEs');
         $modelo->tipoMotorEn = $request->input('tipoMotorEn');
+        $modelo->modelo = $request->input('modelo');
         $modelo->precio = $request->input('precio');
         $modelo->cv = $request->input('cv');
         $modelo->cc = $request->input('cc');
@@ -59,6 +60,16 @@ class modelosController extends Controller
         $modelos = new modelos();
 
         return $modelos->all();
+    }
+
+    public function find(Request $request)
+    {
+
+        $modelos = modelos::where('id', $request->query('id'))->get();
+//       $modelos=$modelos::find(8);
+
+        return $modelos;
+
     }
 
 }

@@ -28,6 +28,8 @@ Route::post('addModel',[\App\Http\Controllers\modelosController::class, 'addMode
 
 Route::get('modelos',[\App\Http\Controllers\modelosController::class, 'index']);
 
+Route::get('modelo/',[\App\Http\Controllers\modelosController::class, 'find']);
+
 Route::get('resetPassword',[\App\Http\Controllers\AuthController::class, 'resetPassword']);
 
 Route::middleware('auth:sanctum')->group(function (){
