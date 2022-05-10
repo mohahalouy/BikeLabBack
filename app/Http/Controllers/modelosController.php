@@ -72,4 +72,15 @@ class modelosController extends Controller
 
     }
 
+    public function findArray(Request $request)
+    {
+
+//        return response($request->input('id'));
+        $modelos = modelos::whereIn('id',$request->input('id'))->get();
+//       $modelos=$modelos::find(8);
+
+        return $modelos;
+
+    }
+
 }
