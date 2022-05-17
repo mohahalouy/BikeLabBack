@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\modelos;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Array_;
 
 class modelosController extends Controller
 {
@@ -72,12 +73,24 @@ class modelosController extends Controller
 
     }
 
-    public function findArray(Request $request)
-    {
+    public function findArray(Request $request){
 
-//        return response($request->input('id'));
-        $modelos = modelos::whereIn('id',$request->input('id'))->get();
+        $ids=[];
+
+        foreach ($request->all() as $valor) {
+            array_push($ids, $valor['id']);
+        }
+
+        $modelos = modelos::whereIn('id', $ids)->get();
 //       $modelos=$modelos::find(8);
+
+        foreach ($request->all() as $valor) {
+            foreach ($modelos as $valorj) {
+                if($valorj['id']===$valor['id']){
+                    $valorj['cantidad']=$valor['cantidad'];
+                }
+            }
+        }
 
         return $modelos;
 

@@ -30,7 +30,7 @@ Route::get('modelos',[\App\Http\Controllers\modelosController::class, 'index']);
 
 Route::get('modelo/',[\App\Http\Controllers\modelosController::class, 'find']);
 
-Route::post('modelos1',[\App\Http\Controllers\modelosController::class, 'findArray']);
+Route::post('modelos',[\App\Http\Controllers\modelosController::class, 'findArray']);
 
 //Route::get('resetPassword',[\App\Http\Controllers\AuthController::class, 'resetPassword']);
 
