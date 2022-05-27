@@ -32,6 +32,12 @@ Route::get('modelo/',[\App\Http\Controllers\modelosController::class, 'find']);
 
 Route::post('modelos',[\App\Http\Controllers\modelosController::class, 'findArray']);
 
+Route::post('addClothing',[\App\Http\Controllers\equipamientosController::class, 'addClothing']);
+
+Route::get('equipamientos/',[\App\Http\Controllers\equipamientosController::class, 'index']);
+
+Route::get('equipamiento/{id}',[\App\Http\Controllers\equipamientosController::class, 'find']);
+
 //Route::get('resetPassword',[\App\Http\Controllers\AuthController::class, 'resetPassword']);
 
 Route::middleware('auth:sanctum')->group(function (){

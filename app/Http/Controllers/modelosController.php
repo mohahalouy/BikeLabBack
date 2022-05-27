@@ -67,7 +67,7 @@ class modelosController extends Controller
     {
 
         $modelos = modelos::where('id', $request->query('id'))->get();
-//       $modelos=$modelos::find(8);
+//       $modelos=$modelos::find(id8);
 
         return $modelos;
 
@@ -82,7 +82,7 @@ class modelosController extends Controller
         }
 
         $modelos = modelos::whereIn('id', $ids)->get();
-//       $modelos=$modelos::find(8);
+//       $modelos=$modelos::find(id8);
 
         foreach ($request->all() as $valor) {
             foreach ($modelos as $valorj) {
