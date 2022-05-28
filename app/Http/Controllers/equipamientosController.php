@@ -27,7 +27,7 @@ class equipamientosController extends Controller
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
             $file->move('uploads/equipamiento/imagenes/', $filename);
-            $ropa->imgPortada = $filename;
+            $ropa->imagen = $filename;
         }
 
         $ropa->save();

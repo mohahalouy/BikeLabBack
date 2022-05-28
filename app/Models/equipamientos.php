@@ -14,7 +14,7 @@ class equipamientos extends Model
     protected $fillable = [
         'nombreEs',
         'nombreEn',
-        'imgPortada',
+        'imagen',
         'codigoArticulo',
         'tipoArticulo',
         'tallas',
