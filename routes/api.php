@@ -30,7 +30,7 @@ Route::get('modelos',[\App\Http\Controllers\modelosController::class, 'index']);
 
 Route::get('modelo/',[\App\Http\Controllers\modelosController::class, 'find']);
 
-Route::post('modelos',[\App\Http\Controllers\modelosController::class, 'findArray']);
+Route::post('articulos',[\App\Http\Controllers\articulosController::class, 'findArray']);
 
 Route::post('addClothing',[\App\Http\Controllers\equipamientosController::class, 'addClothing']);
 

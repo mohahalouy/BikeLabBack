@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\equipamientos;
 use App\Models\modelos;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Array_;
@@ -75,24 +76,48 @@ class modelosController extends Controller
 
     public function findArray(Request $request){
 
-        $ids=[];
+        $idsModelos=[];
+        $idsEquipamientos=[];
+
+        $arrayGeneral=[];
 
         foreach ($request->all() as $valor) {
-            array_push($ids, $valor['id']);
+            if ($valor['tipoArticulo'] === 'modelo') {
+                array_push($idsModelos, $valor['id']);
+            } else if ($valor['tipoArticulo'] === 'equipamiento') {
+                array_push($idsEquipamientos, $valor['id']);
+            }
         }
 
-        $modelos = modelos::whereIn('id', $ids)->get();
-//       $modelos=$modelos::find(id8);
+        $modelos = modelos::whereIn('id', $idsModelos)->get();
+        $equipamientos = equipamientos::whereIn('id', $idsEquipamientos)->get();
+
 
         foreach ($request->all() as $valor) {
             foreach ($modelos as $valorj) {
-                if($valorj['id']===$valor['id']){
-                    $valorj['cantidad']=$valor['cantidad'];
+                if ($valorj['id'] === $valor['id'] && $valor['tipoArticulo'] === 'modelo') {
+                    $valorj['cantidad'] = $valor['cantidad'];
+                }
+            }
+            foreach ($equipamientos as $valorj) {
+                if ($valorj['id'] === $valor['id'] && $valor['tipoArticulo'] === 'equipamiento') {
+                    $valorj['cantidad'] = $valor['cantidad'];
                 }
             }
         }
 
-        return $modelos;
+
+
+        foreach ($modelos as $valor) {
+            array_push($arrayGeneral,$valor);
+        }
+
+        foreach ($equipamientos as $valor) {
+            array_push($arrayGeneral,$valor);
+        }
+
+
+        return $arrayGeneral;
 
     }
 

@@ -17,7 +17,7 @@ class CreateEquipamientos extends Migration
             $table->id();
             $table->string('nombreEs');
             $table->string('nombreEn');
-            $table->string('imgPortada');
+            $table->string('imagen');
             $table->string('codigoArticulo');
             $table->string('tipoArticulo');
             $table->string('tallas');
