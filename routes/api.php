@@ -50,6 +50,8 @@ Route::post('Order',[\App\Http\Controllers\pedidosController::class, 'FindOrder'
 
 Route::post('Items',[\App\Http\Controllers\pedidosController::class, 'FindItems']);
 
+Route::post('sendEmail',[\App\Http\Controllers\emailController::class, 'sendEmail']);
+
 //Route::get('resetPassword',[\App\Http\Controllers\AuthController::class, 'resetPassword']);
 
 Route::middleware('auth:sanctum')->group(function (){
