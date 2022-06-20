@@ -48,9 +48,13 @@ Route::post('Orders',[\App\Http\Controllers\pedidosController::class, 'FindOrder
 
 Route::post('Order',[\App\Http\Controllers\pedidosController::class, 'FindOrder']);
 
+Route::get('AllOrders',[\App\Http\Controllers\pedidosController::class, 'index']);
+
 Route::post('Items',[\App\Http\Controllers\pedidosController::class, 'FindItems']);
 
 Route::post('sendEmail',[\App\Http\Controllers\emailController::class, 'sendEmail']);
+
+Route::post('actualizarPedido',[\App\Http\Controllers\pedidosController::class, 'actualizarPedido']);
 
 //Route::get('resetPassword',[\App\Http\Controllers\AuthController::class, 'resetPassword']);
 

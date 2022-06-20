@@ -40,6 +40,13 @@ class pedidosController extends Controller
         return $pedidos;
     }
 
+    public function index()
+    {
+        $pedidos = new pedidos();
+
+        return $pedidos->all();
+    }
+
     public function FindOrder(Request $request)
     {
         $pedidos = pedidos::where('id', $request->input('id'))->get();
@@ -64,5 +71,18 @@ class pedidosController extends Controller
         }
 
         return $arrayGeneral;
+    }
+
+    public function actualizarPedido(Request $request){
+        pedidos::where('id', $request->input('id'))->update([
+            'order' => $request->input('order'),
+            'order_status' => $request->input('order_status'),
+            'order_date' => $request->input('order_date'),
+            'order_shipping_type' => $request->input('order_shipping_type'),
+            'nombre' => $request->input('nombre'),
+            'direccion' => $request->input('direccion'),
+            'ciudad' => $request->input('ciudad'),
+            'totalCesta' => $request->input('totalCesta'),
+        ]);
     }
 }
