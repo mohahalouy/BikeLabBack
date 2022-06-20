@@ -45,7 +45,7 @@ class noticiasController extends Controller
     {
 
         $noticia = noticias::where('id', $request->query('id'))->get();
-//       $noticia=noticias::find(id8);
+//       $noticia=noticias::find(id4);
 
         return $noticia;
 

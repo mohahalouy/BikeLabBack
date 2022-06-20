@@ -47,7 +47,7 @@ class equipamientosController extends Controller
     {
 
         $equipamiento = equipamientos::where('id', $id)->get()->first();
-////       $modelos=$modelos::find(id8);
+////       $modelos=$modelos::find(id4);
 
         return $equipamiento;
 

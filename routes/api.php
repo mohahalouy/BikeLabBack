@@ -38,6 +38,18 @@ Route::get('equipamientos/',[\App\Http\Controllers\equipamientosController::clas
 
 Route::get('equipamiento/{id}',[\App\Http\Controllers\equipamientosController::class, 'find']);
 
+Route::post('datosPersonales',[\App\Http\Controllers\datosPersonalesController::class, 'guardarDatosPersonales']);
+
+Route::post('cargarDatosPersonales',[\App\Http\Controllers\datosPersonalesController::class, 'cargarDatosPersonales']);
+
+Route::post('savePurchase',[\App\Http\Controllers\pedidosController::class, 'savePurchase']);
+
+Route::post('Orders',[\App\Http\Controllers\pedidosController::class, 'FindOrders']);
+
+Route::post('Order',[\App\Http\Controllers\pedidosController::class, 'FindOrder']);
+
+Route::post('Items',[\App\Http\Controllers\pedidosController::class, 'FindItems']);
+
 //Route::get('resetPassword',[\App\Http\Controllers\AuthController::class, 'resetPassword']);
 
 Route::middleware('auth:sanctum')->group(function (){

@@ -68,7 +68,7 @@ class modelosController extends Controller
     {
 
         $modelos = modelos::where('id', $request->query('id'))->get();
-//       $modelos=$modelos::find(id8);
+//       $modelos=$modelos::find(id4);
 
         return $modelos;
 

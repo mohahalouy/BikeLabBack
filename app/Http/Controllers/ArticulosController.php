@@ -11,49 +11,22 @@ class articulosController extends Controller
 {
     public function findArray(Request $request){
 
-        $idsModelos=[];
-        $idsEquipamientos=[];
-
         $arrayGeneral=[];
 
         foreach ($request->all() as $valor) {
-            if ($valor['tipoArticulo'] === 'modelos') {
-                array_push($idsModelos, $valor['id']);
-            } else if ($valor['tipoArticulo'] === 'equipamiento') {
-                array_push($idsEquipamientos, $valor['id']);
+            if ($valor['tipoArticulo'] === 'equipamiento') {
+                $equipamiento = equipamientos::find($valor['id']);
+                $equipamiento["cantidad"] = $valor['cantidad'];
+                $equipamiento["tipoCesta"] = $valor['tipoArticulo'];
+                $equipamiento["tallaSeleccionada"] = $valor['talla'];
+                array_push($arrayGeneral, $equipamiento);
+            }else if ($valor['tipoArticulo'] === 'modelos') {
+                $modelo = modelos::find($valor['id']);
+                $modelo["cantidad"] = $valor['cantidad'];
+                $modelo["tipoCesta"] = $valor['tipoArticulo'];
+                array_push($arrayGeneral, $modelo);
             }
         }
-
-        $modelos = modelos::whereIn('id', $idsModelos)->get();
-        $equipamientos = equipamientos::whereIn('id', $idsEquipamientos)->get();
-
-
-        foreach ($request->all() as $valor) {
-            foreach ($modelos as $valorj) {
-                if ($valorj['id'] === $valor['id'] && $valor['tipoArticulo'] === 'modelos') {
-                    $valorj['cantidad'] = $valor['cantidad'];
-                    $valorj['tipoCesta'] = $valor['tipoArticulo'];
-                }
-            }
-            foreach ($equipamientos as $valorj) {
-                if ($valorj['id'] === $valor['id'] && $valor['tipoArticulo'] === 'equipamiento') {
-                    $valorj['cantidad'] = $valor['cantidad'];
-                    $valorj['tipoCesta'] = $valor['tipoArticulo'];
-                    $valorj['tallaSeleccionada'] = $valor['talla'];
-                }
-            }
-        }
-
-
-
-        foreach ($modelos as $valor) {
-            array_push($arrayGeneral,$valor);
-        }
-
-        foreach ($equipamientos as $valor) {
-            array_push($arrayGeneral,$valor);
-        }
-
 
         return $arrayGeneral;
 
