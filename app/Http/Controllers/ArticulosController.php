@@ -7,7 +7,7 @@ use App\Models\modelos;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Array_;
 
-class articulosController extends Controller
+class ArticulosController extends Controller
 {
     public function findArray(Request $request){
 
